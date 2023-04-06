@@ -34,6 +34,26 @@ def delete_task():
             # Update the task list display
             update_task_list()
 
+def complete_task() :
+    # Get the index of the selected line
+    index = task_list_display.curselection()
+
+    if index:
+        # Get the task_description from the index of the selected line
+        task_description = task_list_display.get(index[0])
+
+        # Find the task in the dictionary by its description
+        task_id_to_complete = None
+        for task_id, description in tasks.items():
+            if description == task_description:
+                task_id_to_complete = task_id
+                break
+
+        if task_id_to_complete is not None:
+            # Add " (Complete)" to the task"
+            tasks[task_id_to_complete] += " (Complete)"
+            # Update the task list display
+            update_task_list()
 
 
 # Function to update the task list display
@@ -51,7 +71,7 @@ root = tk.Tk()
 # Give the app a title
 root.title("To-Do List App")
 # Set the window size
-root.geometry("300x350")
+root.geometry("400x400")
 
 # Create a label for the task list
 title_label = tk.Label(root, text="To-Do List", font=("Arial", 18))
@@ -72,8 +92,12 @@ task_text_box.pack(pady=10)
 add_task_button = tk.Button(root, text="Add Task", width=10, command=lambda: add_task())
 add_task_button.pack(pady=10)
 
+# Create the button for completing tasks
+complete_task_button = tk.Button(root, text="Complete", command=lambda: complete_task())
+complete_task_button.pack(padx=10, pady=10)
+
 # Create the delete button for deleting tasks
-delete_task_button = tk.Button(root, text="Delete Task", width=10, command=delete_task)
+delete_task_button = tk.Button(root, text="Delete Task", width=10, command=lambda: delete_task())
 delete_task_button.pack(pady=10)
 
 # Start the main event loop
