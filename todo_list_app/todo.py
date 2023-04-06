@@ -27,6 +27,10 @@ root.title = "My To-Do List"
 # Set the window size
 root.geometry("300x350")
 
+# Create a label for the task list
+title_label = tk.Label(root, text="To-Do List", font=("Arial", 18))
+title_label.pack(pady=5)
+
 # Create the task list display
 task_list_display = tk.Text(root, width=20, height=10)
 task_list_display.pack(padx=5, pady=20)
