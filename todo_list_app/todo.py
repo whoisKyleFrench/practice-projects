@@ -20,10 +20,11 @@ def update_task_list() :
         task_text = f"{task_id}. {task_description}"
         task_list_display.insert(tk.END, task_text)
 
+
 # Create the GUI
 root = tk.Tk()
 # Give the app a title
-root.title = "My To-Do List"
+root.title("To-Do List App")
 # Set the window size
 root.geometry("300x350")
 
@@ -33,14 +34,17 @@ title_label.pack(pady=5)
 
 # Create the task list display
 task_list_display = tk.Text(root, width=20, height=10)
-task_list_display.pack(padx=5, pady=20)
+task_list_display.pack(padx=5, pady=10)
+
+entry_label = tk.Label(root, text="Enter tasks below", font=("Arial", 10))
+entry_label.pack()
 
 # Create the text box for entering task descriptions
-task_text_box = tk.Entry(root)
-task_text_box.pack(pady=20)
+task_text_box = tk.Entry(root, width=26)
+task_text_box.pack(pady=10)
 
 # Create the button for adding tasks
-add_task_button = tk.Button(root, text="Add Task", command=add_task)
+add_task_button = tk.Button(root, text="Add Task", width=10, command=add_task)
 add_task_button.pack(pady=10)
 
 # Start the main event loop
