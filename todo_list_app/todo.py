@@ -19,3 +19,10 @@ def update_task_list() :
     for task_id, task_description in tasks.items() :
         task_text = f"{task_id}. {task_description}"
         task_list_display.insert(tk.END, task_text)
+
+# Create the GUI
+root = tk.Tk()
+# Give the app a title
+root.title = "My To-Do List"
+# Set the window size
+root.geometry("300x350")
