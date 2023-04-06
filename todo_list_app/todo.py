@@ -34,3 +34,7 @@ task_list_display.pack(padx=5, pady=20)
 # Create the text box for entering task descriptions
 task_text_box = tk.Entry(root)
 task_text_box.pack(pady=20)
+
+# Create the button for adding tasks
+add_task_button = tk.Button(root, text="Add Task", command=add_task)
+add_task_button.pack(pady=10)
