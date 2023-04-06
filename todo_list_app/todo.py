@@ -12,28 +12,6 @@ def add_task():
     update_task_list() # Update the task list display
     task_text_box.delete(0, tk.END) # Delete the text in task_text_box
 
-
-def delete_task():
-    # Get the index of the selected line
-    index = task_list_display.curselection()
-
-    if index:
-        # Get the task_description from the index of the selected line
-        task_description = task_list_display.get(index[0])
-
-        # Find the task in the dictionary by its description
-        task_id_to_remove = None
-        for task_id, description in tasks.items():
-            if description == task_description:
-                task_id_to_remove = task_id
-                break
-
-        if task_id_to_remove is not None:
-            # Remove the task from the dictionary
-            del tasks[task_id_to_remove]
-            # Update the task list display
-            update_task_list()
-
 def complete_task() :
     # Get the index of the selected line
     index = task_list_display.curselection()
@@ -56,29 +34,50 @@ def complete_task() :
             update_task_list()
 
 
+def delete_task():
+    # Get the index of the selected line
+    index = task_list_display.curselection()
+
+    if index:
+        # Get the task_description from the index of the selected line
+        task_description = task_list_display.get(index[0])
+
+        # Find the task in the dictionary by its description
+        task_id_to_remove = None
+        for task_id, description in tasks.items():
+            if description == task_description:
+                task_id_to_remove = task_id
+                break
+
+        if task_id_to_remove is not None:
+            # Remove the task from the dictionary
+            del tasks[task_id_to_remove]
+            # Update the task list display
+            update_task_list()
+
+
+
 # Function to update the task list display
 def update_task_list() :
     task_list_display.delete(0, tk.END) # Clear the task list
-
     # Iterate over the tasks and add them to the list display
     for task_id, task_description in tasks.items() :
         task_text = task_description
         task_list_display.insert(tk.END, task_text)
-
 
 # Create the GUI
 root = tk.Tk()
 # Give the app a title
 root.title("To-Do List App")
 # Set the window size
-root.geometry("400x400")
+root.geometry("400x500")
 
 # Create a label for the task list
 title_label = tk.Label(root, text="To-Do List", font=("Arial", 18))
 title_label.pack(pady=5)
 
 # Create the task list display
-task_list_display = tk.Listbox(root, width=20, height=10)
+task_list_display = tk.Listbox(root, width=50, height=10)
 task_list_display.pack(padx=5, pady=10)
 
 entry_label = tk.Label(root, text="Enter tasks below", font=("Arial", 10))
