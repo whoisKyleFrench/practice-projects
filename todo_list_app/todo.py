@@ -20,7 +20,6 @@ def update_task_list() :
         task_text = f"{task_id}. {task_description}"
         task_list_display.insert(tk.END, task_text)
 
-    task_list_display.config(state=tk.DISABLED) # Disable editing of the task list display
 
 # Create the GUI
 root = tk.Tk()
