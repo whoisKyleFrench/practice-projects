@@ -10,6 +10,7 @@ def add_task() :
     tasks[task_id] = f"{task_description}\n" # Add the task to the dictionary
     task_id += 1
     update_task_list() # Update the task list display
+    task_text_box.delete(0, tk.END) # Delete the text in task_text_box
 
 # Function to update the task list display
 def update_task_list() :
