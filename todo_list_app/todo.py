@@ -30,3 +30,7 @@ root.geometry("300x350")
 # Create the task list display
 task_list_display = tk.Text(root, width=20, height=10)
 task_list_display.pack(padx=5, pady=20)
+
+# Create the text box for entering task descriptions
+task_text_box = tk.Entry(root)
+task_text_box.pack(pady=20)
