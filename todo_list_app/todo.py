@@ -42,3 +42,6 @@ task_text_box.pack(pady=20)
 # Create the button for adding tasks
 add_task_button = tk.Button(root, text="Add Task", command=add_task)
 add_task_button.pack(pady=10)
+
+# Start the main event loop
+root.mainloop()
