@@ -6,7 +6,7 @@ task_id = 1 # Intialize task_id
 # Function to add a task
 def add_task():
     global task_id # Make task_id a global variable
-    task_description = task_text_box.get() # Get the user input
+    task_description = "  " + task_text_box.get() # Get the user input
     tasks[task_id] = task_description # Add the task to the dictionary
     task_id += 1
     update_task_list() # Update the task list display
@@ -70,7 +70,7 @@ root = tk.Tk()
 # Give the app a title
 root.title("To-Do List App")
 # Set the window size
-root.geometry("400x350")
+root.geometry("400x425")
 # Set the background color
 bg_color = "#46485d"
 root.configure(bg=bg_color)
@@ -83,9 +83,10 @@ title_label.pack(pady=5)
 title_label.configure(bg=bg_color, fg=fg_color)
 
 # Create the task list display
-task_list_display = tk.Listbox(root, width=50, height=10)
+task_list_display = tk.Listbox(root, width=40, height=10, takefocus=0, font=("Arial", 14,))
 task_list_display.pack(padx=5, pady=10)
 
+# Create label for text entry field
 entry_label = tk.Label(root, fg=fg_color, text="Please Enter Tasks Below", font=("Arial", 10))
 entry_label.pack()
 entry_label.configure(bg=bg_color)
