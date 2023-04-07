@@ -70,18 +70,25 @@ root = tk.Tk()
 # Give the app a title
 root.title("To-Do List App")
 # Set the window size
-root.geometry("400x500")
+root.geometry("400x350")
+# Set the background color
+bg_color = "#46485d"
+root.configure(bg=bg_color)
+# Set the foreground color
+fg_color = "#FFFFFF"
 
 # Create a label for the task list
 title_label = tk.Label(root, text="To-Do List", font=("Arial", 18))
 title_label.pack(pady=5)
+title_label.configure(bg=bg_color, fg=fg_color)
 
 # Create the task list display
 task_list_display = tk.Listbox(root, width=50, height=10)
 task_list_display.pack(padx=5, pady=10)
 
-entry_label = tk.Label(root, text="Enter tasks below", font=("Arial", 10))
+entry_label = tk.Label(root, fg=fg_color, text="Please Enter Tasks Below", font=("Arial", 10))
 entry_label.pack()
+entry_label.configure(bg=bg_color)
 
 # Create the text box for entering task descriptions
 task_text_box = tk.Entry(root, width=26)
@@ -90,6 +97,8 @@ task_text_box.pack(pady=10)
 # Create a button frame
 button_frame = tk.Frame(root)
 button_frame.pack(pady=10)
+# Set button Frame background color
+button_frame.configure(bg=bg_color)
 
 # Create the button for adding tasks
 add_task_button = tk.Button(button_frame, text="Add", command=lambda: add_task())
