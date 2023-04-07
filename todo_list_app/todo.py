@@ -87,17 +87,21 @@ entry_label.pack()
 task_text_box = tk.Entry(root, width=26)
 task_text_box.pack(pady=10)
 
+# Create a button frame
+button_frame = tk.Frame(root)
+button_frame.pack(pady=10)
+
 # Create the button for adding tasks
-add_task_button = tk.Button(root, text="Add Task", width=10, command=lambda: add_task())
-add_task_button.pack(pady=10)
+add_task_button = tk.Button(button_frame, text="Add", command=lambda: add_task())
+add_task_button.grid(row=0, column=0, pady=10)
 
 # Create the button for completing tasks
-complete_task_button = tk.Button(root, text="Complete", command=lambda: complete_task())
-complete_task_button.pack(padx=10, pady=10)
+complete_task_button = tk.Button(button_frame, text="Complete", command=lambda: complete_task())
+complete_task_button.grid(row=0, column=1, padx=10, pady=10)
 
 # Create the delete button for deleting tasks
-delete_task_button = tk.Button(root, text="Delete Task", width=10, command=lambda: delete_task())
-delete_task_button.pack(pady=10)
+delete_task_button = tk.Button(button_frame, text="Delete", command=lambda: delete_task())
+delete_task_button.grid(row=0, column=2, pady=10)
 
 # Start the main event loop
 root.mainloop()
