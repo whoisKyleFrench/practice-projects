@@ -55,11 +55,10 @@ def delete_task():
             # Update the task list display
             update_task_list()
 
-
-
 # Function to update the task list display
 def update_task_list() :
     task_list_display.delete(0, tk.END) # Clear the task list
+
     # Iterate over the tasks and add them to the list display
     for task_id, task_description in tasks.items() :
         task_text = task_description
@@ -70,7 +69,7 @@ root = tk.Tk()
 # Give the app a title
 root.title("To-Do List App")
 # Set the window size
-root.geometry("400x425")
+root.geometry("400x400")
 # Set the background color
 bg_color = "#46485d"
 root.configure(bg=bg_color)
@@ -83,7 +82,7 @@ title_label.pack(pady=5)
 title_label.configure(bg=bg_color, fg=fg_color)
 
 # Create the task list display
-task_list_display = tk.Listbox(root, width=40, height=10, takefocus=0, font=("Arial", 14,))
+task_list_display = tk.Listbox(root, activestyle="none", width=40, height=10, font=("Arial", 14,))
 task_list_display.pack(padx=5, pady=10)
 
 # Create label for text entry field
@@ -93,11 +92,11 @@ entry_label.configure(bg=bg_color)
 
 # Create the text box for entering task descriptions
 task_text_box = tk.Entry(root, width=26)
-task_text_box.pack(pady=10)
+task_text_box.pack(pady=5)
 
 # Create a button frame
 button_frame = tk.Frame(root)
-button_frame.pack(pady=10)
+button_frame.pack(pady=5)
 # Set button Frame background color
 button_frame.configure(bg=bg_color)
 
