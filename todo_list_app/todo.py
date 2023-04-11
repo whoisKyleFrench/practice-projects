@@ -76,14 +76,31 @@ root.configure(bg=bg_color)
 # Set the foreground color
 fg_color = "#FFFFFF"
 
+# Create the menu bar
+menu_bar = tk.Menu(root)
+# Create the 'File' menu
+file_menu = tk.Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label='File', menu=file_menu)
+file_menu.add_command(label="Exit", command=root.quit)
+# Create the 'Edit' menu
+edit_menu = tk.Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label='Edit', menu=edit_menu)
+edit_menu.add_command(label="New Task", command=add_task)
+edit_menu.add_separator()
+edit_menu.add_command(label="Complete", command=complete_task)
+edit_menu.add_separator()
+edit_menu.add_command(label="Delete", command=delete_task)
+# Attach the menu bar to the root window
+root.config(menu=menu_bar)
+
 # Create a label for the task list
 title_label = tk.Label(root, text="To-Do List", font=("Arial", 18))
-title_label.pack(pady=5)
+title_label.pack(pady=0)
 title_label.configure(bg=bg_color, fg=fg_color)
 
 # Create the task list display
-task_list_display = tk.Listbox(root, activestyle="none", width=40, height=10, font=("Arial", 14,))
-task_list_display.pack(padx=5, pady=10)
+task_list_display = tk.Listbox(root, activestyle="none", width=28, height=10, font=("Arial", 14,))
+task_list_display.pack(padx=5, pady=8)
 
 # Create label for text entry field
 entry_label = tk.Label(root, fg=fg_color, text="Please Enter Tasks Below", font=("Arial", 10))
