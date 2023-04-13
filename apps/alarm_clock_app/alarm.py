@@ -13,21 +13,23 @@ def main():
         userInput = input("\nLet's set the alarm for: ")
 
         alarmTone = None
-        print(
-            "\nPlease select an alarm tone:\nAlarm Clock', 'Dream Alarm', 'Morning Joy' or 'Severe Warning'"
-        )
-        selectedTone = input("\nThe alarm tone will be: ").lower()
+        while alarmTone is None:
+            print(
+                "\nPlease select an alarm tone:\nAlarm Clock', 'Dream Alarm', 'Morning Joy' or 'Severe Warning'"
+            )
+            selectedTone = input("\nThe alarm tone will be: ").lower()
 
-        if selectedTone == "alarm clock":
-            alarmTone = "alarm_sounds\clock-alarm-8761.mp3"
-        elif selectedTone == "dream alarm":
-            alarmTone = "alarm_sounds\dream-memory-alarm-clock-109567.mp3"
-        elif selectedTone == "morning joy":
-            alarmTone = "alarm_sounds\morning-joy-alarm-clock-20961.mp3"
-        elif selectedTone == "severe warning":
-            alarmTone = "alarm_sounds\severe-warning-alarm-98704.mp3"
-        else:
-            print("Please select a valid alarm tone.")
+            if selectedTone == "alarm clock":
+                alarmTone = "alarm_sounds\clock-alarm-8761.mp3"
+            elif selectedTone == "dream alarm":
+                alarmTone = "alarm_sounds\dream-memory-alarm-clock-109567.mp3"
+            elif selectedTone == "morning joy":
+                alarmTone = "alarm_sounds\morning-joy-alarm-clock-20961.mp3"
+            elif selectedTone == "severe warning":
+                alarmTone = "alarm_sounds\severe-warning-alarm-98704.mp3"
+            else:
+                print("Please select a valid alarm tone.")
+                alarmTone = None
 
         if userInput[-2:].upper() in ["AM", "PM"]:
             1
@@ -68,6 +70,21 @@ def main():
     # If the set alarm time has already passed, set the alarm time for tomorrow
     if secondsUntilAlarm < 0:
         secondsUntilAlarm += 86400
+
+    print("\nAlarm has been set!")
+
+    # Countdown timer
+    while secondsUntilAlarm > 0:
+        hours, remainder = divmod(secondsUntilAlarm, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        countdown = f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+        print(f"\rThe alarm will sound in: {countdown}", end="")
+        time.sleep(1)
+        secondsUntilAlarm -= 1
+
+    # Sound the alarm
+    print("\nYour alarm is going off!")
+    playsound(alarmTone)
 
 
 # Run the program
