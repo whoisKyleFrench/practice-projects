@@ -1,9 +1,20 @@
 import time
 import datetime
+import tkinter as tk
+from tkinter import *
 from playsound import playsound
+
+# Create the GUI window
+root = tk.Tk()
+# Set the window size
+root.geometry("500x500")
+# Set the window title
+root.title("Alarm Clock Application")
 
 
 def main():
+    # Run the GUI
+    root.mainloop()
     # Ensure valid format, get alarm time and selected alarm tone from user
     invalid = True
     while invalid is True:
