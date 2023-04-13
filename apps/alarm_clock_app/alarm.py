@@ -10,6 +10,18 @@ root = tk.Tk()
 root.geometry("500x500")
 # Set the window title
 root.title("Alarm Clock Application")
+# Create the menubar
+menubar = Menu(root)
+# Create the file menu
+filemenu = Menu(menubar, tearoff=0)
+filemenu.add_command(label="Exit", command=root.quit)
+menubar.add_cascade(label="File", menu=filemenu)
+# Create the edit menu
+editmenu = Menu(menubar, tearoff=0)
+editmenu.add_command(label="Add Alarm", command="addAlarm")
+editmenu.add_command(label="Delete Alarm", command="delAlarm")
+menubar.add_cascade(label="Edit", menu=editmenu)
+root.config(menu=menubar)
 
 
 def main():
