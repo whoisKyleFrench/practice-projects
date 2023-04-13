@@ -49,6 +49,26 @@ def main():
         else:
             print("Invalid time format. Please try again.")
 
+    # Calculate the total number of seconds until the alarm should sound
+    alarmTime = [hours, minutes]
+    seconds_hms = [3600, 60, 1]
+    alarmSeconds = sum(
+        [a * b for a, b in zip(seconds_hms[: len(alarmTime)], alarmTime)]
+    )
+
+    # Get the current time in seconds
+    now = datetime.datetime.now()
+    currentTimeInSeconds = sum(
+        [a * b for a, b in zip(seconds_hms, [now.hour, now.minute, now.second])]
+    )
+
+    # This is the total amount of seconds until the alarm should
+    secondsUntilAlarm = alarmSeconds - currentTimeInSeconds
+
+    # If the set alarm time has already passed, set the alarm time for tomorrow
+    if secondsUntilAlarm < 0:
+        secondsUntilAlarm += 86400
+
 
 # Run the program
 if __name__ == "__main__":
