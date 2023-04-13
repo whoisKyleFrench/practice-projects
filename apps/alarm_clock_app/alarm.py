@@ -6,30 +6,11 @@ from playsound import playsound
 def main():
     # Ensure valid format, get alarm time and selected alarm tone from user
     invalid = True
-    while invalid:
+    while invalid is True:
         print(
             "\nThe alarm format must be '00:00 AM/PM'\nWhat time would you like to set the alarm for?"
         )
         userInput = input("\nLet's set the alarm for: ")
-
-        alarmTone = None
-        while alarmTone is None:
-            print(
-                "\nPlease select an alarm tone:\nAlarm Clock', 'Dream Alarm', 'Morning Joy' or 'Severe Warning'"
-            )
-            selectedTone = input("\nThe alarm tone will be: ").lower()
-
-            if selectedTone == "alarm clock":
-                alarmTone = "alarm_sounds\clock-alarm-8761.mp3"
-            elif selectedTone == "dream alarm":
-                alarmTone = "alarm_sounds\dream-memory-alarm-clock-109567.mp3"
-            elif selectedTone == "morning joy":
-                alarmTone = "alarm_sounds\morning-joy-alarm-clock-20961.mp3"
-            elif selectedTone == "severe warning":
-                alarmTone = "alarm_sounds\severe-warning-alarm-98704.mp3"
-            else:
-                print("Please select a valid alarm tone.")
-                alarmTone = None
 
         if userInput[-2:].upper() in ["AM", "PM"]:
             1
@@ -46,10 +27,32 @@ def main():
                     invalid = False
                 else:
                     print("Invalid time format. Please try again.")
+                    invalid = True
             except ValueError:
                 print("Invalid time format. Please try again.")
+                invalid = True
         else:
             print("Invalid time format. Please try again.")
+            invalid = True
+
+    alarmTone = None
+    while alarmTone is None:
+        print(
+            "\nPlease select an alarm tone:\n Classic Alarm', 'Dream Memory', 'Morning Joy' or 'Warning'"
+        )
+        selectedTone = input("\nThe alarm tone will be: ").lower()
+
+        if selectedTone == "classic alarm":
+            alarmTone = "alarm_sounds\clock-alarm-8761.mp3"
+        elif selectedTone == "dream memory":
+            alarmTone = "alarm_sounds\dream-memory-alarm-clock-109567.mp3"
+        elif selectedTone == "morning joy":
+            alarmTone = "alarm_sounds\morning-joy-alarm-clock-20961.mp3"
+        elif selectedTone == "warning":
+            alarmTone = "alarm_sounds\severe-warning-alarm-98704.mp3"
+        else:
+            print("Please select a valid alarm tone.")
+            alarmTone = None
 
     # Calculate the total number of seconds until the alarm should sound
     alarmTime = [hours, minutes]
