@@ -27,6 +27,20 @@ def main():
     sentence = f"\nOne day, I was walking to the store when I ran into {a_or_an} {noun_input}.\nAt first I was a little confused, but then I decided to just {verb_input}.\nAfter all, how often do you see {a_or_an} {noun_input} that is so {adjective_input}?!\n"
     print(sentence)
 
+    # Setup program looping
+    yesno = input("Would you like to play again? (y/n): ")
+    if yesno == "y":
+        repeat = True
+    elif yesno == "n":
+        repeat = False
+    else:
+        print("Please enter a valid response.")
+
+    if repeat == True:
+        main()
+    else:
+        quit()
+
 
 if __name__ == "__main__":
     main()
