@@ -1,7 +1,6 @@
 # Welcome the user to the program
-print(
-    "\nWelcome to MLG, the Mad Libs Generator program!\n\nLet's create a silly story!\nI'll ask you for some nouns, verbs and adjectives and we'll use those to generate a silly sentence.\n\nLet's begin!"
-)
+welcome_msg = "\nWelcome to MLG, the Mad Libs Generator program!\n\nLet's create a silly story!\nI'll ask you for some nouns, verbs and adjectives and we'll use those to generate a silly sentence.\n\nLet's begin!"
+print(welcome_msg)
 
 # Get the user input
 noun_input = input("\nEnter a noun: ")
