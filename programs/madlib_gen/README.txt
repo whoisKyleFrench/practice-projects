@@ -1,1 +1,1 @@
-A madlib generator program
+A simple madlib generator program
