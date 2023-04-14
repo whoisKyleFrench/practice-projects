@@ -18,3 +18,7 @@ if noun_input.startswith(options):
     a_or_an = a_an[1]
 else:
     a_or_an = a_an[0]
+
+# Define and print the sentence
+sentence = f"\nOne day, I was walking to the store when I ran into a {noun_input}.\nAt first I was a little confused, but then I decided to just {verb_input}.\nAfter all, how often do you see {a_or_an} {noun_input} that is so {adjective_input}?!\n"
+print(sentence)
